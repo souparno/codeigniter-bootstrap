@@ -176,7 +176,7 @@ class Template {
             'main_content' => $main_content,
         ), TRUE);
 
-        $this->_ci->load->view('template/base_view', array(
+        return $this->_ci->load->view('template/base_view', array(
             'title' => $title,
             'description' => $description,
             'metadata' => $metadata,

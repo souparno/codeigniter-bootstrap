@@ -4,14 +4,8 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-           //    $this->load->library('template');
-           //    $this->template->set_title('Welcome');
-
-echo "Hello";           
-echo assets_url('css/bootstrap.min.css');
-echo "Hi";
-
-$this->load->view('template/base_view');
+            $this->template->set_title('Welcome');
+            $this->template->load_view('welcome_message');
 	}
 }
 
