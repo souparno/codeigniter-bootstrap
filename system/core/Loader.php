@@ -420,6 +420,15 @@ class CI_Loader {
 		return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
 	}
 
+        public function ext_view($view, $vars = array(), $return = FALSE){
+	  $_ci_ext = pathinfo($view, PATHINFO_EXTENSION);
+	  $view = ($_ci_ext == '') ? $view.'.php' : $view;
+
+
+	  return $this->_ci_load(array('_ci_vars' => $this->_ci_object_to_array($vars), '_ci_path' => $view, '_ci_return' => $return));
+	
+        }
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -748,12 +757,13 @@ class CI_Loader {
 		}
 
 		$file_exists = FALSE;
-
+//echo "This is the path to the view file -> ".$_ci_path."<br/>";
 		// Set the path to the requested file
 		if ($_ci_path != '')
 		{
 			$_ci_x = explode('/', $_ci_path);
 			$_ci_file = end($_ci_x);
+
 		}
 		else
 		{
@@ -762,6 +772,7 @@ class CI_Loader {
 
 			foreach ($this->_ci_view_paths as $view_file => $cascade)
 			{
+
 				if (file_exists($view_file.$_ci_file))
 				{
 					$_ci_path = $view_file.$_ci_file;
