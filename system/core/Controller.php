@@ -46,9 +46,8 @@ class CI_Controller {
 		{
 			$this->$var =& load_class($class);
 		}
-echo "start"."<br/>";
+
 		$this->load =& load_class('Loader', 'core');
-echo "finish"."<br/>";
 		$this->load->initialize();
 		
 		log_message('debug', "Controller Class Initialized");
