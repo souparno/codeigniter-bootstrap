@@ -56,16 +56,8 @@ class Template {
         $this->css[$css] = $css;
     }
 
-   public function render($view, $data = array(), $return = FALSE)
+   public function render($view = null, $data = array(), $return = FALSE)
     {
-//$this->ci->load->ext_view();
-
-//echo "Hiiiii";      
-
-
-
-
-
         // Not include master view on ajax request
         if ($this->ci->input->is_ajax_request())
         {
@@ -119,14 +111,16 @@ class Template {
 
         $header = $this->ci->load->ext_view('public/template/header', array(),TRUE);
         $footer = $this->ci->load->ext_view('public/template/footer', array(), TRUE);
+        
+        if(empty($view)){
+          $view = $this->ci->router->class."/".$this->ci->router->method;
+        }
         $main_content = $this->ci->load->view($view, $data, TRUE);
-
         $body = $this->ci->load->ext_view('public/template/layout/' . $this->layout, array(
             'header' => $header,
             'footer' => $footer,
             'main_content' => $main_content
         ), TRUE);
-
         return $this->ci->load->ext_view('public/template/base_view', array(
             'title' => $title,
             'description' => $description,

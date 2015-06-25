@@ -10,7 +10,7 @@ class Welcome extends CI_Controller {
     public function index()
     {
        $this->template->set_title('Welcome');
-       $this->template->render('welcome/index');
+       $this->template->render();
     }
 }
 
