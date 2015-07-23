@@ -66,7 +66,7 @@ class Template {
             $this->ci->load->view($view, $data);
             return;
         }
-/*
+
         // Title
         if (empty($this->title))
         {
@@ -74,9 +74,9 @@ class Template {
         }
         else
         {
-            $title = $this->title . $this->title_separator . $this->brand_name;
+            $title = $this->title;
         }
-*/
+
         // Description
         $description = $this->description;
 
@@ -115,7 +115,7 @@ class Template {
         $footer = $this->ci->load->ext_view('public/themes/'.$this->theme.'/footer', array(), TRUE);
         $main_content = $this->ci->load->view($view, $data, TRUE);
         return $this->ci->load->ext_view('public/themes/'.$this->theme.'/index', array(
-            //'title' => $title,
+            'title' => $title,
             'description' => $description,
             'metadata' => $metadata,
             'header' => $header,
