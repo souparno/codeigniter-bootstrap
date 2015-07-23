@@ -502,7 +502,6 @@ class CI_Loader {
 	 */
 	public function helper($helpers = array())
 	{
-             echo "i am inside the helper function<br/>";
 		foreach ($this->_ci_prep_filename($helpers, '_helper') as $helper)
 		{
 			if (isset($this->_ci_helpers[$helper]))
@@ -511,7 +510,7 @@ class CI_Loader {
 			}
 
 			$ext_helper = APPPATH.'helpers/'.config_item('subclass_prefix').$helper.'.php';
- echo config_item('subclass_prefix') ."<br/>";
+ 
 			// Is this a helper extension request?
 			if (file_exists($ext_helper))
 			{
