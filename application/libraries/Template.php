@@ -4,11 +4,10 @@ class Template {
 
     private $ci;
 
-    protected $brand_name = 'CodeIgniter Skeleton';
     protected $title_separator = ' - ';
     protected $ga_id = FALSE; // UA-XXXXX-X
 
-    protected $layout = 'default';
+    protected $theme = 'default';
 
     protected $title = FALSE;
     protected $description = FALSE;
@@ -23,9 +22,9 @@ class Template {
         $this->ci =& get_instance();
     }
 
-    public function set_layout($layout)
+    public function set_theme($theme)
     {
-        $this->layout = $layout;
+        $this->theme = $theme;
     }
 
     public function set_title($title)
@@ -58,23 +57,26 @@ class Template {
 
    public function render($view = null, $data = array(), $return = FALSE)
     {
+        if(empty($view)){
+          $view = $this->ci->router->class."/".$this->ci->router->method;
+        }
         // Not include master view on ajax request
         if ($this->ci->input->is_ajax_request())
         {
             $this->ci->load->view($view, $data);
             return;
         }
-
+/*
         // Title
         if (empty($this->title))
         {
-            $title = $this->brand_name;
+            $title = '';
         }
         else
         {
             $title = $this->title . $this->title_separator . $this->brand_name;
         }
-
+*/
         // Description
         $description = $this->description;
 
@@ -109,25 +111,18 @@ class Template {
         }
         $css = implode('', $css);
 
-        $header = $this->ci->load->ext_view('public/template/header', array(),TRUE);
-        $footer = $this->ci->load->ext_view('public/template/footer', array(), TRUE);
-        
-        if(empty($view)){
-          $view = $this->ci->router->class."/".$this->ci->router->method;
-        }
+        $header = $this->ci->load->ext_view('public/themes/'.$this->theme.'/header', array(),TRUE);
+        $footer = $this->ci->load->ext_view('public/themes/'.$this->theme.'/footer', array(), TRUE);
         $main_content = $this->ci->load->view($view, $data, TRUE);
-        $body = $this->ci->load->ext_view('public/template/layout/' . $this->layout, array(
-            'header' => $header,
-            'footer' => $footer,
-            'main_content' => $main_content
-        ), TRUE);
-        return $this->ci->load->ext_view('public/template/base_view', array(
-            'title' => $title,
+        return $this->ci->load->ext_view('public/themes/'.$this->theme.'/index', array(
+            //'title' => $title,
             'description' => $description,
             'metadata' => $metadata,
+            'header' => $header,
+            'footer' => $footer,
+            'main_content' => $main_content,
             'js' => $js,
             'css' => $css,
-            'body' => $body,
             'ga_id' => $this->ga_id,
         ) , FALSE);
     }
