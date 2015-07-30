@@ -19,7 +19,7 @@ class Template {
 
     function __construct()
     {
-        $this->ci =& get_instance();
+        $this->ci = get_instance();
     }
 
     public function set_theme($theme)
@@ -112,6 +112,9 @@ class Template {
         $css = implode('', $css);
 
         $header = $this->ci->load->ext_view('public/themes/'.$this->theme.'/header', array(),TRUE);
+
+
+
         $footer = $this->ci->load->ext_view('public/themes/'.$this->theme.'/footer', array(), TRUE);
         $main_content = $this->ci->load->view($view, $data, TRUE);
         return $this->ci->load->ext_view('public/themes/'.$this->theme.'/index', array(

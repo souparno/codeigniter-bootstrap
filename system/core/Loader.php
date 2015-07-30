@@ -420,15 +420,6 @@ class CI_Loader {
 		return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
 	}
 
-        public function ext_view($view, $vars = array(), $return = FALSE){
-	  $_ci_ext = pathinfo($view, PATHINFO_EXTENSION);
-	  $view = ($_ci_ext == '') ? $view.'.php' : $view;
-
-
-	  return $this->_ci_load(array('_ci_vars' => $this->_ci_object_to_array($vars), '_ci_path' => $view, '_ci_return' => $return));
-	
-        }
-
 	// --------------------------------------------------------------------
 
 	/**
