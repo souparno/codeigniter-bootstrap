@@ -9,13 +9,10 @@
  */
 if ( ! function_exists('assets_url'))
 {
-    function assets_url($uri = '')
-    {
+    function assets_url($uri = ''){
 
-        $CI = get_instance();
-
-        $assets_url = $CI->config->item('assets_url');
- 
+        $CI =& get_instance();
+        $assets_url = $CI->config->item('assets_url'); 
         return $assets_url . trim($uri, '/');
     }
 }

@@ -19,7 +19,7 @@ class Template {
 
     function __construct()
     {
-        $this->ci = get_instance();
+        $this->ci =& get_instance();
     }
 
     public function set_theme($theme)
