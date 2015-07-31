@@ -7,5 +7,9 @@ class MY_Controller extends CI_Controller {
 		$this->load->initialize();
 		
 		log_message('debug', "Controller Class Initialized");
+              
+                $this->load->config('assets'); 
+                $this->load->helper('url');
+                $this->load->library('template');
 	} 
  }
