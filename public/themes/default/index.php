@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title><?php echo $title; ?></title>
-        <meta name="description" content="<?php //echo $description; ?>">
+        <meta name="description" content="<?php echo $description; ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Extra metadata -->
