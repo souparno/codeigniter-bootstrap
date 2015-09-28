@@ -29,7 +29,7 @@
     <body>
        	<div class="container">
             <?php echo $header; ?>
-	    <?php echo $main_content; ?>
+	    <?php echo $content; ?>
 	</div><!-- /.container -->
 	<?php echo $footer; ?>
         <!-- / -->
